@@ -1,91 +1,79 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <header class="header">
+    <nav class="navigation">
+      <div class="logo-container">
+        <img alt="Popcorn logo" class="logo" src="@/assets/brand/movie-ticket.png" width="50" height="50" />
+        <span class="logo-name">Popcorn</span>
+      </div>
+      <ul class="links-conatiner">
+        <li>
+          <RouterLink to="/movies">Movies</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/tv-shows">TV Shows</RouterLink>
+        </li>
+        <li>
+          <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="User" class="user-image" width="36"
+            height="36" />
+        </li>
+      </ul>
+    </nav>
   </header>
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
+<style lang="scss">
+.header {
+  border-bottom: 1px solid var(--gray-200);
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .navigation {
+    max-width: 1400px;
+    padding: 0.5rem;
+    margin: 0 auto;
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
+  .logo-container {
     display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+
+    .logo-name {
+      font-size: 1.5rem;
+      line-height: 50px;
+      font-weight: 600;
+    }
   }
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
+  ul.links-conatiner {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+
     font-size: 1rem;
+    color: var(--gray-600);
 
-    padding: 1rem 0;
-    margin-top: 1rem;
+    li a {
+      list-style: none;
+      padding: 0.8rem 1rem;
+      border-radius: 0.5rem;
+
+      &:hover {
+        color: var(--gray-800);
+        background-color: var(--gray-200);
+      }
+    }
+
+    .user-image {
+      margin-left: 1rem;
+      border-radius: 9999px;
+    }
   }
 }
 </style>
