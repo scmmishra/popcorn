@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { MovieService } from '@/api';
+import buildPath from '@/api/images';
+
+const movieApi = new MovieService()
+
+const upcomingMovies = await movieApi.upcoming()
 </script>
 
 <template>
@@ -7,9 +13,10 @@
       <img src="/sample-poster.png">
     </section>
     <section class="area">
-      <h2>Movies</h2>
+      <h2>Upcoming Movies</h2>
       <div class="movie-grid">
-        <div v-for="ii in 6" class="movie-card">
+        <div v-for="movie in upcomingMovies.results" class="movie-card">
+          <img :src="buildPath(movie.poster_path)" :alt="movie.title" />
         </div>
       </div>
     </section>
@@ -59,10 +66,16 @@ main {
     gap: 1rem;
 
     .movie-card {
-      height: 300px;
+      aspect-ratio: 2/3;
+      height: auto;
       border-radius: 0.5rem;
       background-color: var(--gray-200);
-      width: 100%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 }
