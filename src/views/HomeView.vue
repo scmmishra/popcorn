@@ -3,6 +3,7 @@ import { MovieService } from '@/api';
 import buildPath from '@/api/images';
 import { onMounted, ref, onUnmounted } from 'vue';
 import { formatDate } from '@/utils/date'
+import MovieCard from '../components/MovieCard.vue'
 
 const movieApi = new MovieService()
 let upcomingMovies = await movieApi.topRated()
@@ -45,16 +46,8 @@ const handleScroll = () => {
   <main class="list-component">
     <section class="area">
       <div class="movie-grid">
-        <div v-for="movie in moviesToDisplay" class="movie-card">
-          <img :src="buildPath(movie.poster_path)" :alt="movie.title" />
-          <div class="movie-card-overlay">
-            <div>
-              <h4>{{ movie.title }}</h4>
-              <p style="margin-top: 0.5rem">{{ formatDate(movie.release_date) }}</p>
-            </div>
-          </div>
-        </div>
-        <template v-if="loadingMore">
+        <MovieCard v-for="movie in moviesToDisplay" v-bind="movie"></MovieCard>
+        <template v-if="loadingMore || true">
           <div v-for="ii in 20" class="movie-card loading">
             <img src="@/assets/default.png" />
           </div>
@@ -109,37 +102,13 @@ main {
       transition-property: transform;
       transition-duration: 0.3s;
 
-      .movie-card-overlay {
-        display: none;
-        inset: 0;
-        position: absolute;
-        background-color: var(--gray-200);
-        background: linear-gradient(to top, rgba(1, 1, 1, 1.0) 10%, rgba(255, 255, 255, 0));
-        color: white;
-        align-items: flex-end;
-        padding: 1rem;
-
-        h4 {
-          font-size: 1.5rem;
-          font-weight: 700;
-        }
-      }
-
-      img {
-        height: 100%;
-        object-fit: cover;
-      }
-
-      &:hover {
-        transform: scale(1.05);
-
-        .movie-card-overlay {
-          display: flex;
-        }
-      }
-
       &.loading {
-        animation: Pulsate 1s infinite;
+        animation: Pulsate 3s infinite ease-in;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
