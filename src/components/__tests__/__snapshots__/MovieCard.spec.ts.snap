@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`MovieCard > matches snapshot 1`] = `
+"<div class=\\"movie-card\\" adult=\\"false\\" backdrop_path=\\"/yNXarQfosBZADXVzdLlvDjsk8aq.jpg\\" genre_ids=\\"18,35\\" id=\\"914216\\" original_language=\\"en\\" original_title=\\"The Lost King\\" overview=\\"An amateur historian defies the academic establishment in her efforts to find King Richard III's remains, which were lost for over 500 years.\\" popularity=\\"6.896\\" video=\\"false\\" vote_count=\\"5\\" data-v-1fcbeb8b=\\"\\"><img src=\\"https://image.tmdb.org/t/p/w500//bvteSajbZguotujz0e4Y8JpgJ1G.jpg\\" alt=\\"The Lost King\\" data-v-1fcbeb8b=\\"\\">
+  <div class=\\"movie-card-overlay\\" data-v-1fcbeb8b=\\"\\">
+    <div class=\\"rating-container\\" data-v-1fcbeb8b=\\"\\">
+      <movie-rating-stub value=\\"8\\" data-v-1fcbeb8b=\\"\\"></movie-rating-stub>
+    </div>
+    <div class=\\"info-container\\" data-v-1fcbeb8b=\\"\\">
+      <h4 data-v-1fcbeb8b=\\"\\">The Lost King</h4>
+      <p style=\\"margin-top: 0.5rem;\\" data-v-1fcbeb8b=\\"\\">October 2022</p>
+    </div>
+  </div>
+</div>"
+`;

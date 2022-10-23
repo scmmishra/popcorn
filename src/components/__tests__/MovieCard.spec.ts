@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 
-import { mount } from "@vue/test-utils";
+import { mount, VueWrapper } from "@vue/test-utils";
 import MovieCardVue from "../MovieCard.vue";
 
 const mockMovie = () => {
@@ -24,8 +24,24 @@ const mockMovie = () => {
 };
 
 describe("MovieCard", () => {
+  let wrapper: VueWrapper;
+
+  beforeEach(() => {
+    wrapper = mount(MovieCardVue, {
+      props: mockMovie(),
+      global: {
+        stubs: {
+          MovieRating: true,
+        },
+      },
+    });
+  });
+
+  it("matches snapshot", () => {
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
   it("renders properly", () => {
-    const wrapper = mount(MovieCardVue, { props: mockMovie() });
     expect(wrapper.text()).toContain("The Lost King");
   });
 });
