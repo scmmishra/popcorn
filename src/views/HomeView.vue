@@ -26,14 +26,25 @@ const moviesToDisplay = ref(upcomingMovies.results)
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll)
+  // preemtively load the next page
   loadMore()
 })
+
 onUnmounted(() => {
+  // remove the scroll handler
   window.removeEventListener("scroll", handleScroll)
 })
 
-const handleScroll = () => {
-  let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight > document.documentElement.offsetHeight - 500;
+/**
+ * Scroll handler to load more data from the API
+ */
+function handleScroll() {
+  // document.docuementElement gets a reference to the root node of the document.
+  const { scrollTop, offsetHeight } = document.documentElement
+
+  // a scroll-offest of 400 to start the trigger before the user has reached the bottom of the page
+  const bottomOfWindow = scrollTop + window.innerHeight > offsetHeight - 400;
+
   if (bottomOfWindow) {
     loadMore()
   }
