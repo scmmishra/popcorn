@@ -34,11 +34,9 @@ const circleProps = computed(() => ({
 
 </script>
 <template>
-  <div class="circle-progress" :style="{width:size+'px',height:size+'px'}" :data-pct="progressNumber">
-    <svg :width="size" :height="size" :viewPort="'0 0 '+ size + ' ' + size" version="1.1"
-      xmlns="http://www.w3.org/2000/svg">
-      <circle class="ring" :stroke="ringColor" v-bind="circleProps">
-      </circle>
+  <div class="circle-progress" :data-pct="progressNumber">
+    <svg :width="size" :height="size" viewPort="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <circle :stroke="ringColor" v-bind="circleProps"></circle>
       <circle class="progress_circle" :stroke="progressColor" v-bind="circleProps" :stroke-width="strokeWidth"
         :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset"></circle>
     </svg>
@@ -49,6 +47,8 @@ const circleProps = computed(() => ({
 .circle-progress {
   position: relative;
   text-align: center;
+  width: 36px;
+  height: 36px;
 }
 
 .circle-progress:after {
