@@ -11,12 +11,6 @@ import { RouterLink, RouterView } from "vue-router";
       </div>
       <ul class="links-conatiner">
         <li>
-          <RouterLink to="/movies">Movies</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/tv-shows">TV Shows</RouterLink>
-        </li>
-        <li>
           <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="User" class="user-image" width="36"
             height="36" />
         </li>

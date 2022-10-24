@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { MovieService } from '@/api';
-import { onMounted, ref, onUnmounted } from 'vue';
+import Observer from '@/components/Observer.vue';
+import { ref } from 'vue';
 import MovieCard from '../components/MovieCard.vue'
 
 const movieApi = new MovieService()
@@ -23,43 +24,18 @@ const loadMore = async () => {
 }
 
 const moviesToDisplay = ref(upcomingMovies.results)
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll)
-  // preemtively load the next page
-  loadMore()
-})
-
-onUnmounted(() => {
-  // remove the scroll handler
-  window.removeEventListener("scroll", handleScroll)
-})
-
-/**
- * Scroll handler to load more data from the API
- */
-function handleScroll() {
-  // document.docuementElement gets a reference to the root node of the document.
-  const { scrollTop, offsetHeight } = document.documentElement
-
-  // a scroll-offest of 400 to start the trigger before the user has reached the bottom of the page
-  const bottomOfWindow = scrollTop + window.innerHeight > offsetHeight - 400;
-
-  if (bottomOfWindow) {
-    loadMore()
-  }
-}
 </script>
 
 <template>
   <main class="list-component">
     <section class="area">
       <div class="movie-grid">
-        <MovieCard v-for="movie in moviesToDisplay" :poster_path="movie.poster_path" :title="movie.title"
-          :release_date="movie.release_date" :vote_average="movie.vote_average">
+        <MovieCard v-for="movie in moviesToDisplay" :key="movie.id" :poster_path="movie.poster_path"
+          :title="movie.title" :release_date="movie.release_date" :vote_average="movie.vote_average">
         </MovieCard>
-        <template v-if="loadingMore || true">
-          <div v-for="ii in 20" class="movie-card loading">
+        <Observer @intersect="loadMore"></Observer>
+        <template v-if="loadingMore">
+          <div v-for="ii in 20" :key="ii" class="movie-card loading">
             <img src="@/assets/default.png" />
           </div>
         </template>
