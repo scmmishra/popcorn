@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 
-import { mount, VueWrapper } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import MovieRatingVue from "../MovieRating.vue";
 
 function toFixedNumber(num: number, digits = 2) {
