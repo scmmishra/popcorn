@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import buildPath from '@/api/images';
 import { formatDate } from '@/utils/date';
 import MovieRating from './MovieRating.vue';
+import MoviePosterImage from './MoviePosterImage.vue';
 
 defineProps<{
   poster_path: string;
@@ -13,7 +13,7 @@ defineProps<{
 
 <template>
   <div class="movie-card">
-    <img :src="buildPath(poster_path)" :alt="title" />
+    <MoviePosterImage :poster_path="poster_path" :title="title" />
     <div class="movie-card-overlay">
       <div class="rating-container">
         <MovieRating :value="vote_average"></MovieRating>
