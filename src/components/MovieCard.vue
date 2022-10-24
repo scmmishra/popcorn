@@ -6,7 +6,7 @@ import MovieRating from './MovieRating.vue';
 defineProps<{
   poster_path: string;
   title: string;
-  vote_average: string;
+  vote_average: number;
   release_date: string;
 }>();
 </script>
@@ -16,7 +16,7 @@ defineProps<{
     <img :src="buildPath(poster_path)" :alt="title" />
     <div class="movie-card-overlay">
       <div class="rating-container">
-        <MovieRating :value="Number(vote_average)"></MovieRating>
+        <MovieRating :value="vote_average"></MovieRating>
       </div>
       <div class="info-container">
         <h4>{{ title }}</h4>

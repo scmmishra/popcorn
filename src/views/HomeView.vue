@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { MovieService } from '@/api';
-import buildPath from '@/api/images';
 import { onMounted, ref, onUnmounted } from 'vue';
-import { formatDate } from '@/utils/date'
 import MovieCard from '../components/MovieCard.vue'
 
 const movieApi = new MovieService()
@@ -46,7 +44,9 @@ const handleScroll = () => {
   <main class="list-component">
     <section class="area">
       <div class="movie-grid">
-        <MovieCard v-for="movie in moviesToDisplay" v-bind="movie"></MovieCard>
+        <MovieCard v-for="movie in moviesToDisplay" :poster_path="movie.poster_path" :title="movie.title"
+          :release_date="movie.release_date" :vote_average="movie.vote_average">
+        </MovieCard>
         <template v-if="loadingMore || true">
           <div v-for="ii in 20" class="movie-card loading">
             <img src="@/assets/default.png" />
