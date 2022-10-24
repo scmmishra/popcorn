@@ -35,7 +35,7 @@ const moviesToDisplay = ref(upcomingMovies.results)
         </MovieCard>
         <Observer @intersect="loadMore"></Observer>
         <template v-if="loadingMore">
-          <div v-for="ii in 20" :key="ii" class="movie-card loading">
+          <div v-for="ii in 20" :key="ii" class="movie-card-loader">
             <img src="@/assets/default.png" />
           </div>
         </template>
@@ -44,6 +44,8 @@ const moviesToDisplay = ref(upcomingMovies.results)
   </main>
 </template>
 <style lang="scss" scoped>
+@import '@/assets/scss/mixins.scss';
+
 main {
   max-width: 1400px;
   padding: 1rem 0.5rem;
@@ -76,10 +78,14 @@ main {
 
   .movie-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
 
-    .movie-card {
+    @include breakpoint(md, min) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .movie-card-loader {
       position: relative;
       aspect-ratio: 2/3;
       height: auto;
@@ -88,15 +94,9 @@ main {
       overflow: hidden;
       transition-property: transform;
       transition-duration: 0.3s;
-
-      &.loading {
-        animation: Pulsate 3s infinite ease-in;
-
-        img {
-          width: 100%;
-          object-fit: cover;
-        }
-      }
+      animation: Pulsate 3s infinite ease-in;
+      width: 100%;
+      object-fit: cover;
     }
   }
 }

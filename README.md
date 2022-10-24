@@ -1,6 +1,37 @@
-# popcorn
+<div align="center">
+<br>
+<br>
+<h1>Popcorn</h1>
+<br>
+<br>
+  <p>A TMDB client built for fun.</p>
+</div>
 
-This template should help get you started developing with Vue 3 in Vite.
+
+## Demo Setup
+
+1. Clone the repo, install the packages using `pnpm install`
+2. Create a `.env` file at the root using the example below
+3. Run the project using `pnpm run dev --port 3000`
+4. The project should be available on port [localhost:3000](https://localhost:3000)
+
+### Sample `.env`
+
+```sh
+VITE_API_KEY=<API KEY FROM TMDB>
+VITE_READ_ACCESS_TOKEN=<READ ACCESS TOKEN>
+VITE_API_URL=https://api.themoviedb.org/3
+```
+
+## Running tests
+
+This project uses Vitest for testing, you can run the tests using the following command
+
+```sh
+pnpm run test:unit
+```
+
+## Dev Setup
 
 ## Recommended IDE Setup
 
@@ -17,36 +48,3 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
     2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```

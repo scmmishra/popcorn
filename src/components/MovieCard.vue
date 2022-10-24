@@ -20,28 +20,47 @@ defineProps<{
       </div>
       <div class="info-container">
         <h4>{{ title }}</h4>
-        <p style="margin-top: 0.5rem">{{ formatDate(release_date) }}</p>
+        <p>{{ formatDate(release_date) }}</p>
       </div>
+    </div>
+    <div>
+      <h5>{{ title }}</h5>
+      <p>{{ formatDate(release_date) }}</p>
     </div>
   </div>
 
 </template>
 <style lang="scss" scoped>
+@import '@/assets/scss/mixins.scss';
+
 .movie-card {
-  position: relative;
-  aspect-ratio: 2/3;
-  height: auto;
   border-radius: 0.5rem;
-  background-color: var(--gray-200);
   overflow: hidden;
   transition-property: transform;
   transition-duration: 0.3s;
+
+  @include breakpoint(md, min) {
+    aspect-ratio: 2/3;
+    position: relative;
+    height: auto;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
 
   .movie-card-overlay {
     display: none;
     inset: 0;
     position: absolute;
-    background-color: var(--gray-200);
     background: linear-gradient(to top, rgba(1, 1, 1, 1.0), rgba(255, 255, 255, 0));
     color: white;
     flex-direction: column;
@@ -57,23 +76,22 @@ defineProps<{
       flex-grow: 1;
       background: linear-gradient(to bottom, rgba(1, 1, 1, 0.5) 0%, rgba(255, 255, 255, 0) 30%);
     }
-
-    h4 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
   }
 
   img {
-    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
     object-fit: cover;
   }
 
-  &:hover {
-    transform: scale(1.05);
+  @include breakpoint(md, min) {
+    &:hover {
+      transform: scale(1.05);
+      z-index: 1;
 
-    .movie-card-overlay {
-      display: flex;
+      .movie-card-overlay {
+        display: flex;
+      }
     }
   }
 }
