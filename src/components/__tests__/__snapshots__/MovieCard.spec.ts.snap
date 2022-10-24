@@ -8,8 +8,13 @@ exports[`MovieCard > matches snapshot 1`] = `
     </div>
     <div class=\\"info-container\\" data-v-1fcbeb8b=\\"\\">
       <h4 data-v-1fcbeb8b=\\"\\">The Lost King</h4>
-      <p style=\\"margin-top: 0.5rem;\\" data-v-1fcbeb8b=\\"\\">October 2022</p>
+      <p data-v-1fcbeb8b=\\"\\">October 2022</p>
     </div>
+  </div>
+  <div class=\\"mobile-info\\" data-v-1fcbeb8b=\\"\\">
+    <!-- this replication removes a lot of uncessary CSS -->
+    <h4 data-v-1fcbeb8b=\\"\\">The Lost King</h4>
+    <p data-v-1fcbeb8b=\\"\\">October 2022</p>
   </div>
 </div>"
 `;

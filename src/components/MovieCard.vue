@@ -23,8 +23,9 @@ defineProps<{
         <p>{{ formatDate(release_date) }}</p>
       </div>
     </div>
-    <div>
-      <h5>{{ title }}</h5>
+    <div class="mobile-info">
+      <!-- this replication removes a lot of uncessary CSS -->
+      <h4>{{ title }}</h4>
       <p>{{ formatDate(release_date) }}</p>
     </div>
   </div>
@@ -39,22 +40,36 @@ defineProps<{
   transition-property: transform;
   transition-duration: 0.3s;
 
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+
   @include breakpoint(md, min) {
     aspect-ratio: 2/3;
     position: relative;
     height: auto;
-  }
 
-  h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
+    .mobile-info {
+      display: none;
+    }
 
-  h5 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      z-index: 1;
+
+      .movie-card-overlay {
+        display: flex;
+      }
+    }
   }
 
   .movie-card-overlay {
@@ -82,17 +97,6 @@ defineProps<{
     width: 100%;
     border-radius: 0.5rem;
     object-fit: cover;
-  }
-
-  @include breakpoint(md, min) {
-    &:hover {
-      transform: scale(1.05);
-      z-index: 1;
-
-      .movie-card-overlay {
-        display: flex;
-      }
-    }
   }
 }
 </style>
