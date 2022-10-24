@@ -18,7 +18,7 @@ const mockMovie = () => {
     release_date: "2022-10-07",
     title: "The Lost King",
     video: false,
-    vote_average: "8",
+    vote_average: 8,
     vote_count: 5,
   };
 };
