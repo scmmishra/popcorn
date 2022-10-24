@@ -7,6 +7,11 @@ defineProps<{
   title: string;
 }>();
 
+/**
+ * This handles in case an image results in 404
+ * 
+ * @param event 
+ */
 function setAltImg(event: Event) {
   event.stopPropagation()
   if (event?.target) {
