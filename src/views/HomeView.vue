@@ -97,6 +97,10 @@ main {
       animation: Pulsate 3s infinite ease-in;
       width: 100%;
       object-fit: cover;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }
