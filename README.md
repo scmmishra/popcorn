@@ -2,7 +2,6 @@
 <br>
 <br>
 <h1>Popcorn</h1>
-<br>
   <p>A TMDB client built for fun.</p>
 </div>
 
