@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
 import { mount, VueWrapper } from "@vue/test-utils";
 import MovieRatingVue from "../MovieRating.vue";
@@ -31,7 +31,7 @@ describe("MovieRating", () => {
       });
   });
 
-  it.only("matches snapshot", () => {
+  it("matches snapshot", () => {
     // This is a snapshot test to ensure that any
     // generated svg from the 0 to 10 range is valid
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach((value) => {
@@ -44,6 +44,17 @@ describe("MovieRating", () => {
   });
 
   it("returns errors for invalid values", () => {
-    let wrapper = getComponent(4);
+    // A tricky maneuver to test the warning
+    // mock the console.warn function
+    // test the execution
+    // restore the original console.warn function
+    const mockedWarn = vi.fn(() => console.log("WARNING EXECUTED"));
+    const originalWarn = console.warn;
+    console.warn = mockedWarn;
+
+    getComponent(-4);
+    expect(mockedWarn).toHaveBeenCalledOnce();
+
+    console.warn = originalWarn;
   });
 });
